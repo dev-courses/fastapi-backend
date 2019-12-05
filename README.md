@@ -2,8 +2,7 @@
 
 Based on [https://github.com/nsidnev/fastapi-realworld-example-app](https://github.com/nsidnev/fastapi-realworld-example-app)
 
-Quickstart
-----------
+## Quickstart
 
 First, run ``PostgreSQL``, set environment variables and create database. For example using ``docker``: ::
 
@@ -12,27 +11,25 @@ First, run ``PostgreSQL``, set environment variables and create database. For ex
     export POSTGRES_HOST=$(docker inspect -f '{{range .NetworkSettings.Networks}}{{.IPAddress}}{{end}}' pgdb)
     createdb --host=$POSTGRES_HOST --port=$POSTGRES_PORT --username=$POSTGRES_USER $POSTGRES_DB
 
-Then run the following commands to bootstrap your environment with ``poetry``: ::
+Then run the following commands to bootstrap your environment with `poetry`:
 
     git clone https://github.com/dev-courses/fastapi-backend
     cd fastapi-realworld-example-app
     poetry install
     poetry shell
 
-Then create ``.env`` file (or rename and modify ``.env.example``) in project root and set environment variables for application: ::
+Then create ``.env`` file (or rename and modify ``.env.example``) in project root and set environment variables for application:
 
     touch .env
     echo DB_CONNECTION=postgresql://$POSTGRES_USER:$POSTGRES_PASSWORD@$POSTGRES_HOST:$POSTGRES_PORT/$POSTGRES_DB >> .env
     echo SECRET_KEY=$(openssl rand -hex 32) >> .env
 
-To run the web application in debug use::
+To run the web application in debug use
 
     alembic upgrade head
     uvicorn app.main:app --reload
 
-
-Deployment with Docker
-----------------------
+## Deployment with Docker
 
 You must have ``docker`` and ``docker-compose`` tools installed to work with material in this section.
 First, create ``.env`` file like in `Quickstart` section or modify ``.env.example``.
@@ -44,19 +41,14 @@ Then just run::
 
 Application will be available on ``localhost`` in your browser.
 
-Web routes
-----------
+## Web routes
 
 All routes are available on ``/docs`` or ``/redoc`` paths with Swagger or ReDoc.
 
-
-Project structure
------------------
+## Project structure
 
 Files related to application are in the ``app`` or ``tests`` directories.
 Application parts are:
-
-::
 
     app
     ├── api              - web related stuff.
